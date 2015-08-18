@@ -18,6 +18,14 @@ p {
 	line-height: 37px
 }
 
+h2 {
+	font-family: 'Nunito', sans-serif;
+	font-weight: 400;
+	font-size: 2.8em;
+	color: #105B9D;
+	line-height: 64px;
+}
+
 h3 {
 	font-family: 'Nunito', sans-serif;
 	font-weight: 400;
@@ -51,7 +59,7 @@ h3 {
 
 #question-content {
 	/*SHOW***HIDE*/
-	display: none;
+	display: inline-block
 	max-width: 800px;
 	margin: 0 auto;
 	padding-top: 1.3em;
@@ -60,7 +68,7 @@ h3 {
 
 #final-content {
 	/*SHOW***HIDE*/
-
+	display: none;
 	max-width: 800px;
 	text-align: center;
 	margin: 0 auto;
@@ -101,6 +109,26 @@ h3 {
   	position: relative;
   	left: 35px;
   	cursor: pointer;
+}
+
+.clue-answer-container {
+	position: relative;
+	/*SHOW***HIDE*/
+	display: inline-block;
+	min-height: 720px;
+	margin: 0 auto;
+}
+
+.clue-image {
+	position: absolute;
+	top: 180px;
+  	left: 270px;
+}
+
+.feedback {
+	position: absolute;
+	top: 255px;
+  	left: 931px;
 }
 
 button {
