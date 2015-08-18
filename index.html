@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Test your plane knowledge</title>
+
+		
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/main.css">
+	<link href='http://fonts.googleapis.com/css?family=Nunito:400,300|Roboto+Slab' rel='stylesheet' type='text/css'>
+	<!-- JavaScript -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+</head>
+<body>
+	<section class="main-section">
+		<div class="content-container">
+			<div id="intro-content">
+				<h1>What's that?</h1>
+				<p>Ever curious when a plane goes by what kind it is?<br>See how well honed your aviator skills are in this airplane quiz.</p>
+				<button id="lets-go">Let's Go!</button>
+			</div>
+			<div id="question-content">
+				<p>This is a new aircraft that promises you’ll arrive at your destination more rested because its cabin has better air quality</p>
+				<ul class="answer-choices">
+					<li><button class="answer" id="answer1">787</button></li>
+					<li><button class="answer" id="answer2">A380</button></li>
+					<li><button class="answer" id="answer3">747-800</button></li>
+				</ul>
+				<div class="submit-and-remaining">
+					<div id="submit-answer"></div>
+					<h3>Flight time remaining: <span id="questions-remaining">5</span></h3>
+				</div>
+			</div>
+			<div id="final-content">
+				<h1>You've landed.</h1>
+				<p>With <span id="number-correct">4</span> out of 5 planes correct.</p>
+				<button id="start-over">Start over</button>
+			</div>
+		</div>
+		<div class="clue-answer-container">
+			<div id="clue-image"></div>
+			<div id="answer"></div>
+		</div>
+	</section>	
+</body>
+</html>

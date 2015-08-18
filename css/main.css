@@ -1,0 +1,143 @@
+section, div {
+  border: 1px solid Chocolate;
+}
+
+h1 {
+	font-family: 'Roboto Slab', serif;
+	font-size: 2.5em;
+	color: #FFFFFF;
+	letter-spacing: 2.03px;
+	line-height: 63px;
+}
+
+p {
+	font-family: 'Nunito', sans-serif;
+	font-weight: 300;
+	font-size: 1.6em;
+	color: #FFFFFF;
+	line-height: 37px
+}
+
+h3 {
+	font-family: 'Nunito', sans-serif;
+	font-weight: 400;
+	font-size: 1.2em;
+	color: #B5C0D4;
+	line-height: 32px;
+}
+
+.main-section {
+  background-image: url("../img/ba-background.png");
+  background-position: 0 bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 1000px;
+}
+
+.content-container {
+	min-height: 280px;
+	background: rgba(0, 0, 0, 0.4);
+}
+
+
+#intro-content {
+	/*SHOW***HIDE*/
+	display: none;
+	max-width: 800px;
+	text-align: center;
+	margin: 0 auto;
+
+}
+
+#question-content {
+	/*SHOW***HIDE*/
+	display: none;
+	max-width: 800px;
+	margin: 0 auto;
+	padding-top: 1.3em;
+	text-align: center;
+}
+
+#final-content {
+	/*SHOW***HIDE*/
+
+	max-width: 800px;
+	text-align: center;
+	margin: 0 auto;
+
+}
+
+#question-content > p {
+	max-width: 300px;
+	margin: 0 auto;
+	display: inline-block;
+	text-align: center;
+
+}
+
+.answer-choices {
+	list-style: none;
+	display: inline-block;
+	max-width: 180px;
+	margin: 0 auto;
+	padding-bottom: 30px;
+	vertical-align: top;
+}
+
+.submit-and-remaining {
+	max-width: 250px;
+	display: inline-block;
+	margin: 0 auto;
+	padding-left: 30px;
+	vertical-align: bottom;
+}
+
+#submit-answer {
+	background-image: url("../img/plane-icon.png");
+	height: 120px;
+	width: 120px;
+	background-size: cover;
+  	background-repeat: no-repeat;
+  	position: relative;
+  	left: 35px;
+  	cursor: pointer;
+}
+
+button {
+  background-color: #2D8BDE;
+  border-radius: 16px;
+  border-color: transparent;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 400;
+  color: #FFFFFF;
+  width: 170px;
+  height: 50px;
+  font-size: 1.2em;
+  line-height: 32px;
+  transition: background-color 200ms ease;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: #165D9C;
+}
+
+.answer {
+  background-color: #E9544B;
+  border-radius: 16px;
+  border-color: transparent;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 400;
+  color: #FFFFFF;
+  width: 170px;
+  height: 50px;
+  font-size: 1.2em;
+  line-height: 32px;
+  transition: background-color 200ms ease;
+  margin-top: 0.4em;
+}
+
+.answer:hover {
+  cursor: pointer;
+  background-color: #2D8BDE;
+}
