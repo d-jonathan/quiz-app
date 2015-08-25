@@ -1,9 +1,3 @@
-//create an object for each question
-
-var answerkey = {
-	question1: "answer1",
-}
-
 var question1 = {
 	question: "This is a new aircraft that promises you’ll arrive at your destination more rested because its cabin has better air quality.",
 	clue: "img/b787.png",
@@ -77,74 +71,62 @@ var question5 = {
 var questions = [question1, question2, question3, question4, question5];
 
 var count = {
-	answered: 1,
+	answered: 0,
 	correct: 0,
 }
-
-//store the question objects in an array; access the question objects with question[number]
-
-//create object for number of questions answered, number correct, with a reset method
 
 
 $(document).ready(function(){ 
 
 $('#lets-go').click(function(){
 	
-
-//for loop - x 5
-
 	$('#intro-content').hide();
     $('#question-content').show();
     $('.clue-answer-container').show();
     $('.feedback').hide();
     $('#next-answer').hide();
-    
-    updateQuestionContent();
-    
-    
-	
-	});
 
+	//for (var i = 1; i < 6; i++) {
 
-	//listen for the clicks on the answers
+		updateQuestionContent();
 
 		$('.answer-choices').on( "click", "li", function (clicked) {
 			console.log(clicked.target.id);
-			question1.selected=clicked.target.id
+			questions[count.answered].selected=clicked.target.id
 			console.log(questions[count.answered].evaluate());
-			//if (question)
+			
+			if (questions[count.answered].evaluate()) {
+				$('#correct-incorrect').text("Correct!");
+				++count.correct
+			}
+			else {
+				$('#correct-incorrect').text("Incorrect");
+			}
+			
+
 			$('.feedback').show();
     		$('#next-answer').show();
     		$('.answer-choices').off( "click", "li");
 		});
 
 		$('#next-answer').click(function(){
-			console.log('proceed to next question');
 			++count.answered;
+			console.log(count.answered)
+			console.log(count.correct)
 			$('.feedback').hide();
+			$('#next-answer').hide();
+			updateQuestionContent();
 		});
 
-		//evaluate user answer using object method
 
-		//display feedback (correct/incorrect)
+	//}
 
-		//update variable correct count + question answered count
+	
+	});
 
-		//display "next question" icon
 
-	//listen for click event on "next question"
 
-		//update question content with next question
-
-		//update possible answers
-
-		//update image clue
-
-		//hide feedback again
-
-		//hide next question
-
-		//listen for clicks on answers again...
+		
 
 //once for loop completes, then display the complete/reset page
 
@@ -161,8 +143,9 @@ $('#lets-go').click(function(){
 function updateQuestionContent () {
 	$('#answer1').text(questions[count.answered].answer1);
     $('#answer2').text(questions[count.answered].answer2);
-    $('#answer2').text(questions[count.answered].answer3);
+    $('#answer3').text(questions[count.answered].answer3);
     $('#question').text(questions[count.answered].question);
     $('#clue-image1').attr("src",questions[count.answered].clue);
+    $('#questions-remaining').text(5-count.answered)
 
 }
