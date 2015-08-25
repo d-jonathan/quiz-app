@@ -73,70 +73,73 @@ var questions = [question1, question2, question3, question4, question5];
 var count = {
 	answered: 0,
 	correct: 0,
+	reset:function() {
+    	
+    	for (var prop in count) {
+    		if (prop !== 'reset') {
+    		count[prop]=0;
+    		}
+    	}
+    }
 }
 
 
-$(document).ready(function(){ 
+$(document).ready(function(){
 
-$('#lets-go').click(function(){
+	$('#lets-go, #start-over').click(function(){
 	
-	$('#intro-content').hide();
-    $('#question-content').show();
-    $('.clue-answer-container').show();
-    $('.feedback').hide();
-    $('#next-answer').hide();
-
-	//for (var i = 1; i < 6; i++) {
-
+		$('#intro-content').hide();
+		$('#final-content').hide();
+	    $('#question-content').show();
+	    $('.clue-answer-container').show();
+	    $('.feedback').hide();
+	    $('#next-answer').hide();
+		count.reset();
 		updateQuestionContent();
-
-		$('.answer-choices').on( "click", "li", function (clicked) {
-			console.log(clicked.target.id);
-			questions[count.answered].selected=clicked.target.id
-			console.log(questions[count.answered].evaluate());
-			
-			if (questions[count.answered].evaluate()) {
-				$('#correct-incorrect').text("Correct!");
-				++count.correct
-			}
-			else {
-				$('#correct-incorrect').text("Incorrect");
-			}
-			
-
-			$('.feedback').show();
-    		$('#next-answer').show();
-    		$('.answer-choices').off( "click", "li");
-		});
-
-		$('#next-answer').click(function(){
-			++count.answered;
-			console.log(count.answered)
-			console.log(count.correct)
-			$('.feedback').hide();
-			$('#next-answer').hide();
-			updateQuestionContent();
 		});
 
 
-	//}
+	$('.answer-choices').on( "click", "li", function (clicked) {
+		console.log(clicked.target.id);
+		questions[count.answered].selected=clicked.target.id
+		console.log(questions[count.answered].evaluate());
+			
+		if (questions[count.answered].evaluate()) {
+			$('#correct-incorrect').text("Correct!");
+			++count.correct
+		}
+		else {
+			$('#correct-incorrect').text("Incorrect");
+		}
+			
+
+		$('.feedback').fadeIn(300);
+    	$('#next-answer').fadeIn(300);
+    	//$('.answer-choices').off( "click", "li");
+		
+		});
 
 	
-	});
+	$('#next-answer').click(function(){
+		++count.answered;
+		console.log(count.answered)
+		console.log(count.correct)
+		$('.feedback').hide();
+		$('#next-answer').hide();
 
+		if (count.answered<5) {
+			updateQuestionContent();
+		}
 
-
+		else {
+			$('#question-content').hide();
+	    	$('.clue-answer-container').hide();
+	    	$('#final-content').show();
+	    	$('#number-correct').text(count.correct);
+		}
 		
-
-//once for loop completes, then display the complete/reset page
-
-		//show count of questions correct
-
-		//listen for event on reset
-
-			//reset question count & number correct
-
-			//re-display first question and enter the for loop
+		
+		});
 
 });
 
