@@ -1,72 +1,40 @@
+
+
 var question1 = {
 	question: "This is a new aircraft that promises you’ll arrive at your destination more rested because its cabin has better air quality.",
-	clue: "img/b787.png",
-	answer1: "787",
-	answer2: "A380",
-	answer3: "747-800",
-	answer: "answer1",
-	selected: "user selection",
-	evaluate: function () {
-		return this.answer==this.selected 	
-		//return "The correct answer is "+this.answer+". You selected "+this.selected 
-	}
+	clue: "https://raw.githubusercontent.com/d-jonathan/quiz-app/master/img/b787.png",
+    answers:["787","A380","747-800","SU-27"],
+	answer: 0, 
 }
 
 var question2 = {
 	question: "This is the first aircraft to make flying on the upper deck possible.",
-	clue: "img/b747.jpg",
-	answer1: "A380",
-	answer2: "777",
-	answer3: "747",
-	answer: "answer3",
-	selected: "user selection",
-	evaluate: function () {
-		return this.answer==this.selected 	
-		//return "The correct answer is "+this.answer+". You selected "+this.selected 
-	}
+	clue: "https://raw.githubusercontent.com/d-jonathan/quiz-app/master/img/b747.jpg",
+	answers: ["A380", "777", "747"],
+	answer: 2,
 }
 
 var question3 = {
 	question: "This twin engine jet can travel long distances and some might say has a lucky designation.",
-	clue: "img/b777.jpg",
-	answer1: "787",
-	answer2: "777",
-	answer3: "A340",
-	answer: "answer2",
-	selected: "user selection",
-	evaluate: function () {
-		return this.answer==this.selected 	
-		//return "The correct answer is "+this.answer+". You selected "+this.selected 
-	}
+	clue: "https://raw.githubusercontent.com/d-jonathan/quiz-app/master/img/b777.jpg",
+	answers: ["787", "777", "A340"],
+	answer: 1,
 }
 
 var question4 = {
 	question: "This is the largest jet in the world and can fly more than 500 passengers.",
-	clue: "img/a380.jpg",
-	answer1: "A380",
-	answer2: "747-800",
-	answer3: "777",
-	answer: "answer1",
-	selected: "user selection",
-	evaluate: function () {
-		return this.answer==this.selected 	
-		//return "The correct answer is "+this.answer+". You selected "+this.selected 
-	}
+	clue: "https://raw.githubusercontent.com/d-jonathan/quiz-app/master/img/a380.jpg",
+	answers: ["A380", "747-800", "777"],
+	answer: 0,
 }
 
 var question5 = {
 	question: "You might take one of these on a short journey within a continent.",
-	clue: "img/b737.jpg",
-	answer1: "727",
-	answer2: "737",
-	answer3: "A320",
-	answer: "answer2",
-	selected: "user selection",
-	evaluate: function () {
-		return this.answer==this.selected 	
-		//return "The correct answer is "+this.answer+". You selected "+this.selected 
-	}
+	clue: "https://raw.githubusercontent.com/d-jonathan/quiz-app/master/img/b737.jpg",
+	answers: ["727", "737", "A320"],
+	answer: 1,
 }
+
 
 var questions = [question1, question2, question3, question4, question5];
 
@@ -100,11 +68,11 @@ $(document).ready(function(){
 
 
 	$('.answer-choices').on( "click", "li", function (clicked) {
-		console.log(clicked.target.id);
-		questions[count.answered].selected=clicked.target.id
-		console.log(questions[count.answered].evaluate());
+		console.log($(event.target).text());
+		selected=$(event.target).text();
+		console.log(evaluate(selected));
 			
-		if (questions[count.answered].evaluate()) {
+		if (evaluate(selected)) {
 			$('#correct-incorrect').text("Correct!");
 			++count.correct
 		}
@@ -143,12 +111,28 @@ $(document).ready(function(){
 
 });
 
+//function updateQuestionContent () {
+//	$('#answer1').text(questions[count.answered].answer1);
+  //  $('#answer2').text(questions[count.answered].answer2);
+  //  $('#answer3').text(questions[count.answered].answer3);
+  //  $('#question').text(questions[count.answered].question);
+  //  $('#clue-image1').attr("src",questions[count.answered].clue);
+  //  $('#questions-remaining').text(5-count.answered)
+
+//}
+
 function updateQuestionContent () {
-	$('#answer1').text(questions[count.answered].answer1);
-    $('#answer2').text(questions[count.answered].answer2);
-    $('#answer3').text(questions[count.answered].answer3);
+    $('.answer-choices').empty();
+    for (i=0;i<questions[count.answered].answers.length;i++){
+    	$('.answer-choices').append('<li><button class="answer">'+questions[count.answered].answers[i]+'</button></li>');
+    }
     $('#question').text(questions[count.answered].question);
     $('#clue-image1').attr("src",questions[count.answered].clue);
-    $('#questions-remaining').text(5-count.answered)
+    $('#questions-remaining').text(5-count.answered);
 
+}
+
+function evaluate(selected) {
+    console.log(questions[count.answered].answers[questions[count.answered].answer]);
+    return questions[count.answered].answers[questions[count.answered].answer]==selected;
 }
